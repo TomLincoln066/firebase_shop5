@@ -25,10 +25,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         auth = FirebaseAuth.getInstance()
 
-        val userEmail: String = "Willtest4@gmail.com"
+        val userEmail: String = "Willtest1689@gmail.com"
         val userPassword: String = "123456"
 
-        createAccount("willtest4@gmail.com1568", "123456", "willtest4")
+//        createAccount(userEmail, "123456", "willtest4")
         signIn(userEmail, userPassword)
 
         val userId = "1"
@@ -36,37 +36,25 @@ class MainActivity : AppCompatActivity() {
 
 //        Log.d(TAG,"${convertLongToDateString(System.currentTimeMillis())}")
 
-
-//        queryEmail("guo@test.com")
-
-
-//        queryEmail("tom@gmail.com")
-
         queryEmail("burger@example.com")
 
-//        setSupportActionBar(toolbar)
 
-
-        //
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
-        //
 
 
         //創建資料到database
 
-
         val db = FirebaseFirestore.getInstance()
-
 
         val user = hashMapOf(
 
             "email" to userEmail,
-            "id" to "9o1n5k5b10fG3yCEoy7eL56nnbD3",
-            "name" to "name"
+            //
 
+            "id" to "9o1n5k5b10fG3yCEoy7eL56nnbD3",
+            //
+
+            "name" to "Will"
+            //
 
         )
 
@@ -123,7 +111,8 @@ class MainActivity : AppCompatActivity() {
                     )
 // Add a new document with a generated ID
 
-                    db.collection("Users")
+//                    db.collection("Users")
+                    db.collection("member")
                         .document(email)
                         .set(user)
                         .addOnSuccessListener { documentReference ->
