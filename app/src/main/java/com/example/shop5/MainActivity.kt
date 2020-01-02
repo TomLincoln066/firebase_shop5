@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
 //            "email" to "darthhun7985@gmail.com"
         )
 
-        db.collection("users")
+        db.collection("member")
             .document("darthhun9999@gmail.com")
             .set(user)
             .addOnSuccessListener { documentReference ->
@@ -162,8 +162,10 @@ class MainActivity : AppCompatActivity() {
         author: String,
         time: String
     ) {
+
+
         val db = FirebaseFirestore.getInstance()
-        val docID = db.collection("Articles").document().id
+        val docID = db.collection("article").document().id
         val user = hashMapOf(
             "author" to author,
             "content" to content,
@@ -173,16 +175,10 @@ class MainActivity : AppCompatActivity() {
             "title" to title
 
 
-//            "article_content" to content,
-//            "article_id" to docID,
-//            "article_tag" to tag,
-//            "article_title" to title,
-//            "author" to author,
-//            "create_time" to time
         )
         // Add a new document with a generated ID
 
-        db.collection("Articles")
+        db.collection("article")
             .document(docID)
             .set(user)
             .addOnSuccessListener { documentReference ->
