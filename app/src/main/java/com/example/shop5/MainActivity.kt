@@ -17,8 +17,7 @@ import java.text.SimpleDateFormat
 class MainActivity : AppCompatActivity() {
 
 
-
-    private  lateinit var  auth: FirebaseAuth
+    private lateinit var auth: FirebaseAuth
     var TAG = "WillTest"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,14 +28,13 @@ class MainActivity : AppCompatActivity() {
         val userEmail: String = "Willtest4@gmail.com"
         val userPassword: String = "123456"
 
-        createAccount("willtest4@gmail.com1568", "123456","willtest4")
+        createAccount("willtest4@gmail.com1568", "123456", "willtest4")
         signIn(userEmail, userPassword)
 
         val userId = "1"
-        articlePost("hi",userId, listOf("aaa"),"aaa","aaa","yyyy/mm/dd hh:mm")
+        articlePost("hi", userId, listOf("aaa"), "aaa", "aaa", "yyyy/mm/dd hh:mm")
 
 //        Log.d(TAG,"${convertLongToDateString(System.currentTimeMillis())}")
-
 
 
 //        queryEmail("guo@test.com")
@@ -44,10 +42,9 @@ class MainActivity : AppCompatActivity() {
 
 //        queryEmail("tom@gmail.com")
 
-          queryEmail("burger@example.com")
+        queryEmail("burger@example.com")
 
 //        setSupportActionBar(toolbar)
-
 
 
         //
@@ -58,8 +55,6 @@ class MainActivity : AppCompatActivity() {
         //
 
 
-
-
         //創建資料到database
 
 
@@ -68,7 +63,7 @@ class MainActivity : AppCompatActivity() {
 
         val user = hashMapOf(
 
-            "email" to "darthhun7985@gmail.com",
+            "email" to userEmail,
             "id" to "9o1n5k5b10fG3yCEoy7eL56nnbD3",
             "name" to "name"
 
@@ -76,7 +71,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         db.collection("member")
-            .document("darthhun9999@gmail.com")
+            .document(userEmail)
             .set(user)
             .addOnSuccessListener { documentReference ->
                 Log.d("MainActivity", "DocumentSnapshot added with ID: ${documentReference}")
@@ -155,9 +150,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-
-
     //發文
 
     private fun articlePost(
@@ -182,7 +174,6 @@ class MainActivity : AppCompatActivity() {
             "article_createTime" to time
 
 
-
         )
         // Add a new document with a generated ID
 
@@ -199,7 +190,6 @@ class MainActivity : AppCompatActivity() {
 
 
     //發文
-
 
 
     //sign in
@@ -239,10 +229,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
     //sign in
-
-
 
 
     //sign out
@@ -255,36 +242,11 @@ class MainActivity : AppCompatActivity() {
     //sign out
 
 
-
-
-    //
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
-
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
-    //
-
     @SuppressLint("SimpleDateFormat")
     fun convertLongToDateString(systemTime: Long): String {
         return SimpleDateFormat("EEEE MMM-dd-yyyy' Time: 'HH:mm")
             .format(systemTime).toString()
     }
-
-
 
 
 }
