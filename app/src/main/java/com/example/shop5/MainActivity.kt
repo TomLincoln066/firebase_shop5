@@ -36,8 +36,16 @@ class MainActivity : AppCompatActivity() {
         articlePost("hi",userId, listOf("aaa"),"aaa","aaa","yyyy/mm/dd hh:mm")
 
 //        Log.d(TAG,"${convertLongToDateString(System.currentTimeMillis())}")
+
+
+
 //        queryEmail("guo@test.com")
+
+
 //        queryEmail("tom@gmail.com")
+
+          queryEmail("burger@example.com")
+
 //        setSupportActionBar(toolbar)
 
 
@@ -82,7 +90,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun queryEmail(email: String) {
         val db = FirebaseFirestore.getInstance()
-        db.collection("Users")
+        db.collection("member")
             .document(email)
             .get()
             .addOnSuccessListener { result ->
@@ -100,8 +108,8 @@ class MainActivity : AppCompatActivity() {
 //            return
 //        }
         val db = FirebaseFirestore.getInstance()
-//
-//        showProgressBar()
+
+
         // [START create_user_with_email]
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
@@ -119,6 +127,7 @@ class MainActivity : AppCompatActivity() {
                         "password" to password
                     )
 // Add a new document with a generated ID
+
                     db.collection("Users")
                         .document(email)
                         .set(user)
