@@ -64,10 +64,7 @@ class MainActivity : AppCompatActivity() {
             "id" to "9o1n5k5b10fG3yCEoy7eL56nnbD3",
             "name" to "name"
 
-//            "first" to "Ada",
-//            "last" to "Lovelace",
-//            "born" to 1815,
-//            "email" to "darthhun7985@gmail.com"
+
         )
 
         db.collection("member")
@@ -167,12 +164,14 @@ class MainActivity : AppCompatActivity() {
         val db = FirebaseFirestore.getInstance()
         val docID = db.collection("article").document().id
         val user = hashMapOf(
+
+            "article_content" to content,
+            "article_id" to docID,
+            "article_tag" to tag,
+            "article_title" to title,
             "author" to author,
-            "content" to content,
-            "createTime" to time,
-            "id" to docID,
-            "tag" to tag,
-            "title" to title
+            "article_createTime" to time
+
 
 
         )
